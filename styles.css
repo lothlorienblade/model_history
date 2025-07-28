@@ -1,0 +1,230 @@
+/*
+  Стилизация сайта в фирменном стиле OpenAI. Цветовая схема основана на тёмном
+  фоне с мягкими акцентами зелёного и серого. Шрифты взяты из семейства Inter
+  для современного и читаемого интерфейса.
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #0f172a; /* глубокий тёмно‑синий фон */
+  color: #e2e8f0; /* светлый текст для контраста */
+  line-height: 1.6;
+}
+
+header {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Герой с абстрактным фоном */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.hero-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(3px) brightness(0.5);
+}
+
+.hero-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 1rem;
+  color: #f8fafc;
+}
+
+.hero-content h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.hero-content p {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  max-width: 700px;
+  margin: 0 auto;
+  color: #94a3b8;
+}
+
+main {
+  padding: 2rem 1rem 4rem;
+}
+
+/* Заголовок таймлайна */
+.timeline-wrapper h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Контейнер для таймлайна со скроллом */
+.timeline-container {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 2rem 0;
+}
+
+/* Горизонтальная линия */
+.timeline-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 2px;
+  background-color: #475569;
+  width: 2000px; /* ширина линии: корректируется в script.js при необходимости */
+  transform: translateY(-50%);
+}
+
+/* Контейнер для событий */
+.events-container {
+  position: relative;
+  height: 180px;
+  min-width: 2000px; /* совпадает с длиной линии */
+}
+
+/* Каждое событие на линии */
+.event {
+  position: absolute;
+  top: 50%;
+  /* Выравниваем событие по вертикали, но оставляем позицию по оси X как есть.
+     Это гарантирует, что точка находится точно на линии времени. */
+  transform: translateY(-50%);
+  text-align: center;
+  cursor: pointer;
+  /* Позволяем содержимому занимать собственную ширину; центрирование
+     осуществляется через translateX(-50%) */
+}
+
+/* Чередование вертикального положения событий: верхние и нижние метки
+   позволяют уменьшить перекрытие текста. */
+.event.top {
+  /* смещаем точку и текст выше линии, чтобы подписи находились наверху */
+  transform: translateY(-160%);
+}
+
+.event.bottom {
+  /* смещаем точку и текст ниже линии */
+  transform: translateY(60%);
+}
+
+.event .dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #10a37f; /* зелёный акцент OpenAI */
+  margin: 0 auto;
+  transition: transform 0.2s ease;
+}
+
+.event:hover .dot {
+  transform: scale(1.2);
+}
+
+.event .label {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  max-width: 160px;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.event .date {
+  font-size: 0.65rem;
+  color: #64748b;
+  max-width: 160px;
+  white-space: normal;
+}
+
+/* Подсказка о прокрутке */
+.scroll-hint {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 0.5rem;
+}
+
+/* Детальная панель для отображения информации о модели */
+.details-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.details-content {
+  background-color: #1e293b;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  max-width: 550px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  color: #f1f5f9;
+}
+
+.details-content h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  color: #ffffff;
+}
+
+.details-content p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #cbd5e1;
+}
+
+#close-btn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #94a3b8;
+  cursor: pointer;
+  line-height: 1;
+}
+
+#close-btn:hover {
+  color: #e2e8f0;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #64748b;
+  padding: 1rem;
+  border-top: 1px solid #1e293b;
+}

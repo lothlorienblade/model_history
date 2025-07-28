@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Эволюция моделей ChatGPT</title>
+  <!-- Google Font for a clean, modern look similar to OpenAI's branding -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="hero">
+      <!-- Decorative abstract background inspired by OpenAI's palette -->
+      <img src="8f6049f2-421b-4a76-bc94-72b8765e7615.png" alt="Абстрактный фон" class="hero-bg">
+      <div class="hero-content">
+        <h1>Эволюция моделей ChatGPT</h1>
+        <p>Интерактивный таймлайн развития моделей ChatGPT — от первых шагов до самых последних достижений.</p>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="timeline-wrapper">
+      <h2>Таймлайн релизов</h2>
+      <div class="timeline-container">
+        <div class="timeline-line" id="timeline-line"></div>
+        <div class="events-container" id="events-container"></div>
+      </div>
+      <!-- Hint for horizontal scrolling on small screens -->
+      <p class="scroll-hint">Совет: прокручивайте горизонтально, чтобы увидеть больше событий</p>
+    </section>
+    <!-- Hidden details panel that appears when an event is selected -->
+    <div class="details-panel" id="details-panel">
+      <button id="close-btn" aria-label="Закрыть окно">&times;</button>
+      <div class="details-content" id="details-content"></div>
+    </div>
+  </main>
+  <footer>
+    <p>© 2025 Интерактивный таймлайн ChatGPT. Дизайн в фирменном стиле OpenAI.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
